@@ -1,9 +1,9 @@
 export class Hodiny {
-
+    
     #cislice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     #bod = function (x, y) {
-        this.x = x;
-        this.y = y
+        this.x = Math.round(x);
+        this.y = Math.round(y)
     };
     #hodinyElement;
     #platno2D;
@@ -26,9 +26,9 @@ export class Hodiny {
     nastavCas(objektDatumACas) {
         this.#vymazPlatno();
         this.#vykresliCifernik();
-        const hodina = Math.round(objektDatumACas.getHours());
-        const minuta = Math.round(objektDatumACas.getMinutes());
-        const sekunda = Math.round(objektDatumACas.getSeconds());
+        const sekunda = objektDatumACas.getSeconds();
+        const minuta = objektDatumACas.getMinutes();
+        const hodina = objektDatumACas.getHours() + (minuta / 60);
         this.#vykresliHodinovku(hodina);
         this.#vykresliMinutovku(minuta);
         this.#vykresliSekundovku(sekunda); 
@@ -94,12 +94,10 @@ export class Hodiny {
     }
 
     #vykresliCislici(cislice, bod) {
-        const x = Math.round(bod.x);
-        const y = Math.round(bod.y);
         this.#platno2D.font = this.#velikostPisma + "pt Arial";
         this.#platno2D.textAlign = "center";
         this.#platno2D.textBaseline = "middle";
-        this.#platno2D.fillText(cislice, x, y);
+        this.#platno2D.fillText(cislice, bod.x, bod.y);
     }
 
     #vykresliRucicku(uhel, delka, sirka = 1) {
@@ -112,8 +110,8 @@ export class Hodiny {
     }
 
     #vykresliHodinovku(hodina) {
-        if (!Number.isInteger(hodina) || hodina < 0 || hodina > 23) {
-            throw new Error("Hodina musí být celé číslo od 0 do 23.");
+        if (hodina < 0 || hodina > 23) {
+            throw new Error("Hodina musí být číslo od 0 do 23.");
         }
         if (hodina > 11) {
             hodina -= 12;
@@ -125,8 +123,8 @@ export class Hodiny {
     }
 
     #vykresliMinutovku(minuta) {
-        if (!Number.isInteger(minuta) || minuta < 0 || minuta > 59) {
-            throw new Error("Minuta musí být celé číslo od 0 do 59.");
+        if (minuta < 0 || minuta > 59) {
+            throw new Error("Minuta musí být číslo od 0 do 59.");
         }
         const uhel = minuta * (360 / 60);
         const delka = this.#polomer * 4/5;
@@ -135,8 +133,8 @@ export class Hodiny {
     }
 
     #vykresliSekundovku(sekunda) {
-        if (!Number.isInteger(sekunda) || sekunda < 0 || sekunda > 59) {
-            throw new Error("Sekunda musí být celé číslo od 0 do 59.");
+        if (sekunda < 0 || sekunda > 59) {
+            throw new Error("Sekunda musí být číslo od 0 do 59.");
         }
         const uhel = sekunda * (360 / 60);
         const delka = this.#polomer * 4/5;
