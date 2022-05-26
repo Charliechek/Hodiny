@@ -6,5 +6,6 @@ export class Bod
     constructor(x, y) {
         this.x = Math.round(x);
         this.y = Math.round(y);
+        Object.freeze(this);
     }
 }

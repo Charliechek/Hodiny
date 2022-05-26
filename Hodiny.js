@@ -3,7 +3,8 @@ import { Cifernik } from "./prvky/Cifernik.js";
 import { Hodinovka } from "./prvky/Hodinovka.js";
 import { Minutovka } from "./prvky/Minutovka.js";
 import { Sekundovka } from "./prvky/Sekundovka.js";
-import { Bod } from "./Bod.js";
+import { Rozmery } from "./data/Rozmery.js";
+import { Cas } from "./data/Cas.js";
 
 export class Hodiny {
     
@@ -17,19 +18,8 @@ export class Hodiny {
     constructor(hodinyElement) {
         this.#hodinyElement = hodinyElement;
         this.#platno2D = this.#hodinyElement.getContext("2d");
-        this.#vypocitejRozmery();
+        this.#rozmery = new Rozmery(hodinyElement);
         this.#vytvorPrvky();
-    }
-    
-    #vypocitejRozmery() {
-        const polomer = Math.min(this.#hodinyElement.offsetHeight, this.#hodinyElement.offsetWidth) / 2;
-        this.#rozmery = {
-            polomer: polomer,
-            stred: new Bod(polomer, polomer),
-            sirkaCaryTluste: Math.round(polomer / 30),
-            sirkaCaryTenke: Math.round(polomer / 100),
-            velikostPisma: Math.round(polomer / 6)
-        };
     }
 
     #vytvorPrvky() {
@@ -44,11 +34,7 @@ export class Hodiny {
     
     nastavCas(objektDatumACas) {
         this.#vymazPlatno();
-        const cas = {
-            sekunda: objektDatumACas.getSeconds(),
-            minuta: objektDatumACas.getMinutes(),
-            hodina: objektDatumACas.getHours() + (objektDatumACas.getMinutes() / 60)
-        };
+        const cas = new Cas(objektDatumACas);
         this.#vykresliPrvky(cas);
     }
 
