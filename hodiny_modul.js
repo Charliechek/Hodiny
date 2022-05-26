@@ -2,7 +2,7 @@ import { Hodiny } from "./Hodiny.js";
 
 const hodinyElement = document.querySelector("#hodiny");
 
-const hodiny = new Hodiny(hodinyElement);
+const hodiny = new Hodiny(hodinyElement, Hodiny.CIFERNIK_RIMSKY);
 
 setInterval(aktualizujCas, 1000);
 

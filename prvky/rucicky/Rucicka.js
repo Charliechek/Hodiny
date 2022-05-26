@@ -1,4 +1,4 @@
-import { Prvek } from "./Prvek.js";
+import { Prvek } from "../Prvek.js";
 
 export class Rucicka extends Prvek
 {

@@ -1,5 +1,4 @@
-import { Hodiny } from "../Hodiny.js";
-import { Prvek } from "./Prvek.js";
+import { Prvek } from "../Prvek.js";
 
 export class Cifernik extends Prvek
 {
@@ -12,7 +11,7 @@ export class Cifernik extends Prvek
         for (let i = 0; i < 12; i++) {
             const uhel = (i + 1) * (360 / 12);
             const bod = this.vypocitejBod(uhel, this._rozmery.polomer * 3/4);
-            this.#vykresliCislici(Hodiny.cislice[i], bod);
+            this.#vykresliCislici(this.cislice[i], bod);
         }
     }
     

@@ -8,7 +8,6 @@ export class Prvek
     constructor(platno, rozmery) {
         this._platno = platno;
         this._rozmery = rozmery;
-        Object.freeze(this);
     }
 
     vypocitejBod(uhel, polomer) {
