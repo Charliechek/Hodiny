@@ -7,6 +7,5 @@ const hodiny = new Hodiny(hodinyElement);
 setInterval(aktualizujCas, 1000);
 
 function aktualizujCas() {
-    const datum = (new Date());
-    hodiny.nastavCas(datum);
+    hodiny.nastavCas(new Date());
 }
