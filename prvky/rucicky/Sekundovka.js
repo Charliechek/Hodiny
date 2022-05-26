@@ -6,6 +6,6 @@ export class Sekundovka extends Rucicka
         const uhel = cas.sekunda * (360 / 60);
         const delka = this._rozmery.polomer * 4/5;
         const sirka = this._rozmery.sirkaCaryTenke;
-        this.vykresliRucicku(uhel, delka, sirka);
+        this._vykresliRucicku(uhel, delka, sirka);
     }
 }

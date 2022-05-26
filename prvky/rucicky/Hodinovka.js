@@ -7,6 +7,6 @@ export class Hodinovka extends Rucicka
         const uhel = hodina * (360 / 12);
         const delka = this._rozmery.polomer * 1/2;
         const sirka = this._rozmery.sirkaCaryTluste;
-        this.vykresliRucicku(uhel, delka, sirka);
+        this._vykresliRucicku(uhel, delka, sirka);
     }
 }

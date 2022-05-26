@@ -2,8 +2,8 @@ import { Prvek } from "../Prvek.js";
 
 export class Rucicka extends Prvek
 {
-    vykresliRucicku(uhel, delka, sirka = 1) {
-        const bod = this.vypocitejBod(uhel, delka);
-        this.vykresliCaru(this._rozmery.stred, bod, sirka);
+    _vykresliRucicku(uhel, delka, sirka = 1) {
+        const bod = this._vypocitejBodNaKruznici(uhel, delka);
+        this._vykresliCaru(this._rozmery.stred, bod, sirka);
     }
 }

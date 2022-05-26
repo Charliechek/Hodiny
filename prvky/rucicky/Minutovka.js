@@ -6,6 +6,6 @@ export class Minutovka extends Rucicka
         const uhel = cas.minuta * (360 / 60);
         const delka = this._rozmery.polomer * 4/5;
         const sirka = this._rozmery.sirkaCaryTluste;
-        this.vykresliRucicku(uhel, delka, sirka);
+        this._vykresliRucicku(uhel, delka, sirka);
     }
 }
